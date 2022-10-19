@@ -23,6 +23,7 @@ class Overlay: NSObject, NSApplicationDelegate, NSWindowDelegate {
     func main(height: Float, width: Float) {
         NSApp.activate(ignoringOtherApps: true) // Brings our app to the front
         
+        // We define the height and width arguments as Floats, but the NSMakeRect method actually wants CGFloats. I dunno what that even is - I think some leftover from Cocoa, maybe? - but anyway, I think making the external interface ask for a normal Float, and dealing with the weirdness in secret here makes sense.
         let startingRect = NSMakeRect(0, 0, CGFloat(height), CGFloat(width)) // Create the rectangle that our window will use (we will want to pass the dimensions in as arguments in the future)
         self.setupWindow(winRect: startingRect) // winRect: startingRect - this is a labeled argument.
         
@@ -59,8 +60,8 @@ func main() -> Int {
         let delegate = Overlay() // Create our app object
         let app = NSApplication.shared // NSApplication.shared is like...a reference to the Application object provided by AppKit? Honestly I don't quite understand this stuff...
         
-        let height = Float(CommandLine.arguments[1]) ?? 500.0
-        let width = Float(CommandLine.arguments[2])  ?? 500.0
+        let height = Float(CommandLine.arguments[1]) ?? 500.0 // Commandline args always come in as strings, so we gotta make them Floats
+        let width = Float(CommandLine.arguments[2])  ?? 500.0 // Float() returns nil (or maybe 0, I can't remember) if it can't parse a number out of the value, so we gotta default this to something
         
         app.delegate = delegate // ...but attaching our Overlay instance to NSApplication.shared.delegate is kinda what...makes the app run.
         delegate.main(height: height, width: width) // This makes sense, we're calling the actual method we wrote above...
