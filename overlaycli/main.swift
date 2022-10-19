@@ -20,10 +20,10 @@ class SWindow: NSWindow {
 class Overlay: NSObject, NSApplicationDelegate, NSWindowDelegate {
     var window: NSWindow!
     
-    func main() {
+    func main(height: Float, width: Float) {
         NSApp.activate(ignoringOtherApps: true) // Brings our app to the front
         
-        let startingRect = NSMakeRect(0, 0, 500, 500) // Create the rectangle that our window will use (we will want to pass the dimensions in as arguments in the future)
+        let startingRect = NSMakeRect(0, 0, CGFloat(height), CGFloat(width)) // Create the rectangle that our window will use (we will want to pass the dimensions in as arguments in the future)
         self.setupWindow(winRect: startingRect) // winRect: startingRect - this is a labeled argument.
         
         self.window.center() // duh
@@ -59,8 +59,11 @@ func main() -> Int {
         let delegate = Overlay() // Create our app object
         let app = NSApplication.shared // NSApplication.shared is like...a reference to the Application object provided by AppKit? Honestly I don't quite understand this stuff...
         
+        let height = Float(CommandLine.arguments[1]) ?? 500.0
+        let width = Float(CommandLine.arguments[2])  ?? 500.0
+        
         app.delegate = delegate // ...but attaching our Overlay instance to NSApplication.shared.delegate is kinda what...makes the app run.
-        delegate.main() // This makes sense, we're calling the actual method we wrote above...
+        delegate.main(height: height, width: width) // This makes sense, we're calling the actual method we wrote above...
         
         _ = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv) // ...but the app also doesn't run if we don't also call this. Frankly, I think I'm doing something wrong here, but I don't quite understand what.
     }
