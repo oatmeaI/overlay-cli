@@ -16,6 +16,18 @@ class SWindow: NSWindow {
     }
 }
 
+// function to read local file, we pass in the name of the file
+private func getData(name: String?) {
+    guard let path = Bundle.main.path(forResource: "config", ofType: "plist", inDirectory: "Resources") else { return }
+    let url = URL(fileURLWithPath: path)
+
+    let data = try! Data(contentsOf: url)
+
+    guard let plist = try! PropertyListSerialization.propertyList(from: data, format: nil) as? [String: Any] else {return}
+
+    print(plist)
+}
+
 // This class describes the actual app itself!
 class Overlay: NSObject, NSApplicationDelegate, NSWindowDelegate {
     var window: NSWindow!
@@ -59,7 +71,7 @@ func main() -> Int {
     autoreleasepool { // dunno what this does, I assume turns on automatic memory management / garbage collection
         let delegate = Overlay() // Create our app object
         let app = NSApplication.shared // NSApplication.shared is like...a reference to the Application object provided by AppKit? Honestly I don't quite understand this stuff...
-        
+        getData(name: "config")
         let height = Float(CommandLine.arguments[1]) ?? 500.0 // Commandline args always come in as strings, so we gotta make them Floats
         let width = Float(CommandLine.arguments[2])  ?? 500.0 // Float() returns nil (or maybe 0, I can't remember) if it can't parse a number out of the value, so we gotta default this to something
         
