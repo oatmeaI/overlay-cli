@@ -3,7 +3,9 @@ A small CLI tool to display an overlay on macOS. A replacement for Hammerspoon's
 
 ### Setup
 1. Open `overlaycli.xcodeproj` in Xcode
-2. Click "Run"
+2. Pass arguments to project. You can press CMD + SHIFT + < to open the arguments panel. 
+Add 2 arguments one for height and one for width, in that order. 
+3. Click "Run"
 
 All the code is in `main.swift`
 
