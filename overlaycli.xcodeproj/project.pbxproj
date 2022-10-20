@@ -7,22 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9D2D6E3C29008140002F4F93 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2D6E3B29008140002F4F93 /* main.swift */; };
+		850627052900FFB9009FE3EC /* config.plist in Copy Files */ = {isa = PBXBuildFile; fileRef = 85EB0D792900FCB400D3CFA5 /* config.plist */; };
+		850627062900FFD6009FE3EC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2D6E3B29008140002F4F93 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9D2D6E3629008140002F4F93 /* CopyFiles */ = {
+		9D2D6E3629008140002F4F93 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = Resources;
+			dstSubfolderSpec = 7;
 			files = (
+				850627052900FFB9009FE3EC /* config.plist in Copy Files */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		85EB0D792900FCB400D3CFA5 /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		9D2D6E3829008140002F4F93 /* overlaycli */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = overlaycli; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D2D6E3B29008140002F4F93 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				9D2D6E3B29008140002F4F93 /* main.swift */,
+				85EB0D792900FCB400D3CFA5 /* config.plist */,
 			);
 			path = overlaycli;
 			sourceTree = "<group>";
@@ -71,7 +76,7 @@
 			buildPhases = (
 				9D2D6E3429008140002F4F93 /* Sources */,
 				9D2D6E3529008140002F4F93 /* Frameworks */,
-				9D2D6E3629008140002F4F93 /* CopyFiles */,
+				9D2D6E3629008140002F4F93 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -120,7 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D2D6E3C29008140002F4F93 /* main.swift in Sources */,
+				850627062900FFD6009FE3EC /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +249,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -253,6 +259,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
